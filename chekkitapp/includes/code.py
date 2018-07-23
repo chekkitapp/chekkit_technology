@@ -1,6 +1,7 @@
 import random, datetime
 
 from math import floor
+from ..models import
 
 
 def rand_string (config = {"length" : 5}):
