@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'product',
     'ussdapp',
     'account',
+    'frontend',
 ]
 
 MIDDLEWARE = [
