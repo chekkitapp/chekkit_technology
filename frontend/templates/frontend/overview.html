@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for productline in productlines %}
+<a href="{% url 'product:detail_productline' productline.id %}">{{productline.product_name}}</p>
+{% endfor %}
+{% endblock %}
