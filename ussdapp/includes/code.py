@@ -1,7 +1,9 @@
+import hashlib
 import random, datetime
+import uuid
 
 from math import floor
-from ..models import
+from chekkitapp.models import ProductLine, Product, ProductCode, User, UserCheck, Employee, FactoryCheck
 
 
 def rand_string (config = {"length" : 5}):
@@ -60,6 +62,7 @@ def generate_codes(company_code : str, product_line : str, quantity : int = 100)
     return codes
 
 
+
 def split_code(code : str):
     """
     company_code = code[ : 3]
@@ -71,11 +74,28 @@ def split_code(code : str):
     return  code[: 3], code[4 : 5], code[6 :]
 
 def check_code(code : str):
-    codes = split_code(code)
-    company_code = codes[0]
-    product_line = codes[1]
-    product_code = codes[2]
+    """
 
+    :param code:
+    :return:
+    """
+    hashed_code = hash_code(code)
+    if check_hash_code(hashed_code, code):
+
+        codes = split_code(code)
+        company_code = codes[0]
+        product_line = codes[1]
+        product_code = codes[2]
+
+def hash_code(code):
+    # uuid is used to generate a random number (salt) to prevent rainbow table attacks
+    salt = uuid.uuid4().hex
+    hash = hashlib.sha256(salt.encode() + code.encode()).hexdigest() + ':' + salt
+    return hash
+
+def check_hash_code(hashed_code, code):
+    password, salt = hashed_code.split(':')
+    return password == hashlib.sha256(salt.encode() + code.encode()).hexdigest()
 
 #   TODO write the logic for
 
