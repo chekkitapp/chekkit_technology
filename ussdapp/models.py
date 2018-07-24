@@ -77,9 +77,9 @@ class Product(models.Model):
         return self.product_line_id
 
 class ProductCode(models.Model):
-    company_code = models.CharField()
-    product_line_code = models.CharField()
-    product_code = models.CharField()
+    company_code = models.CharField(max_length = 4)
+    product_line_code = models.CharField(max_length = 2)
+    product_code = models.CharField(max_length = 10)
 
 
 #This represents data stored for each internal verification
@@ -87,6 +87,9 @@ class ProductCode(models.Model):
 class FactoryCheck(models.Model):
     employee_id = models.ForeignKey('Employee', on_delete = models.CASCADE)
     date_checked = models.DateTimeField(auto_now = True)
+
+class Location(models.Model):
+    latitude = models.CharField()
 
 #This will help us collect information about each external verification
 #Including how many times a partivular code has been verified and by who where

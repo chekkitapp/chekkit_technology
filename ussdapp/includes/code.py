@@ -43,7 +43,7 @@ def generate_codes(company_code : str, product_line : str, quantity : int = 100)
     """
 
     # TODO check lengths of company_code and product_line before continuing else throw an error
-    # TODO Do Duck Typing on
+    # TODO Do Duck-typing on company and product_line codes
     i = 0
     codes = []
     common_code = company_code + product_line
