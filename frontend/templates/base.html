@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +9,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <!-- from chekkit frontend -->
+  <link rel="stylesheet" href="{% static 'frontend/node_modules/font-awesome/css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'frontend/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css' %}"/>
+  <link rel="stylesheet" href="{% static 'frontend/node_modules/flag-icon-css/css/flag-icon.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'frontend/css/style.css'%}" />
 </head>
 <body>
+
 	<nav class="navbar">
 		<!-- <a class="navbar-brand brand-logo" href="#">logo
 				<img src="#" alt="Logo" style="width:40px;">
@@ -34,7 +41,10 @@
 			  </form>
 			  <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
 				<li class="nav-item">
-				  <a class="nav-link profile-pic" href="#"><img class="rounded-circle" src="images/face.jpg" alt=""></a>
+				  <a href="/">Chekkit</span>
+				  <button type="button" class="btn btn-outline-warning mr-2"><a href="{% url 'product:add_productlines'%}">Create Product Line</a></button>
+				  <button type="button" class="btn btn-outline-warning mr-2"><a href="{% url 'product:generate_product_codes'%}">Generate Product Code(s)</a></button>
+
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="#"><i class="fa fa-th"></i></a>
@@ -45,6 +55,10 @@
 			  </button>
 			</div>
 	</nav>
+
+	<!-- side bar -->
+	
+			<!-- end of side bar -->
 
 	<br>
 	{%block content%}
