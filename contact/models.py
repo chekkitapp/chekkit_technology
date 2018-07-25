@@ -77,9 +77,9 @@ class Product(models.Model):
         return self.product_line_id
 
 class ProductCode(models.Model):
-    company_code = models.CharField()
-    product_line_code = models.CharField()
-    product_code = models.CharField()
+    company_code = models.CharField(max_length = 4)
+    product_line_code = models.CharField(max_length = 2)
+    product_code = models.CharField(max_length = 10)
 
 
 #This represents data stored for each internal verification
