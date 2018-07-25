@@ -58,7 +58,7 @@ def generate_codes(company_code : str, product_line : str, quantity : int = 100)
             codes += time_stamp[14 :] + "0"
         i += 1
         codes.append(code)
-        # TODO Don't forget to hash passwords before saving list to database
+        # TODO Don't forget to hash codes before saving list to database
     return codes
 
 

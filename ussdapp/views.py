@@ -20,6 +20,7 @@ def codes(request):
         for code in codes:
             # make a row of data and save it
             codes_set = cd.split_code(code)
+            # TODO hash code first
             new_code = ProductCode(company_code = codes_set[0],
                                    product_line_code =  codes_set[1],
                                    product_code = codes_set[2])
