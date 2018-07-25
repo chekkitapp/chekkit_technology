@@ -2,6 +2,7 @@
 db.sqlite3
 db.postgresql_psycopg2
 myVenv
+/env
 __pycache__
 media
 # local_settings.py

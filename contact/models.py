@@ -1,85 +1,86 @@
 from django.db import models
 
 # Create your models here.
-# class Contact(models.Model):
-#     phone_number = models.CharField(max_length = 15)
-#     email = models.CharField(max_length = 100)
-#     location = models.CharField(max_length = 150)
-#     correspondence = models.CharField(max_length = 150)
-#     created_on = models.DateTimeField(auto_now_add = True)
+class Contact(models.Model):
+    phone_number = models.CharField(max_length = 15)
+    email = models.CharField(max_length = 100)
+    location = models.CharField(max_length = 150)
+    correspondence = models.CharField(max_length = 150)
+    created_on = models.DateTimeField(auto_now_add = True)
 
-#     class Meta :
-#         ordering = ['-created_on']
-
-
-# class Manufacturer(models.Model):
-#     name = models.CharField(max_length = 30)
-#     code = models.IntegerField(default = 0, blank = True, null = True, unique = True)
-#     industry = models.CharField(max_length = 100)
-#     modified = models.DateTimeField(auto_now = True)
-#     is_active = models.BooleanField(default = False)
-#     created_on = models.DateTimeField(auto_now_add = True)
-#     contact = models.ForeignKey('Contact', on_delete = models.CASCADE)
-
-#     class Meta :
-#         ordering = ['-created_on']
-
-#     def __unicode__(self) :
-#         return u'{} Code:{} industry:{}'.format(self.name, str(self.code), self.industry)
-
-# class Employee(models.Model):
-#     pass
-
-# class User(models.Model):
-#     first_name = models.CharField(max_length = 30)
-#     last_name = models.CharField(max_length = 30)
-#     session_id = models.IntegerField()
-#     user_type = models.CharField(max_length = 30)
-#     contact = models.ForeignKey('Contact', on_delete = models.CASCADE)
+    class Meta :
+        ordering = ['-created_on']
 
 
-# class Batch(models.Model):
-#     batch_number = models.CharField(max_length = 100)
-#     production_date = models.DateTimeField()
-#     expiry_date = models.DateTimeField()
-#     origin = models.CharField(max_length = 50)
-#     created_on = models.DateTimeField(auto_now_add = True)
-#     modified = models.DateTimeField(auto_now = True)
-#     is_active = models.BooleanField(default = False)
+class Manufacturer(models.Model):
+    name = models.CharField(max_length = 30)
+    code = models.IntegerField(default = 0, blank = True, null = True, unique = True)
+    industry = models.CharField(max_length = 100)
+    modified = models.DateTimeField(auto_now = True)
+    is_active = models.BooleanField(default = False)
+    created_on = models.DateTimeField(auto_now_add = True)
+    contact = models.ForeignKey('Contact', on_delete = models.CASCADE)
 
-#     class Meta :
-#         ordering = ['-created_on']
+    class Meta :
+        ordering = ['-created_on']
 
-# class ProductLine(models.Model):
-#     name = models.CharField(max_length = 100)
-#     photo = models.ImageField(upload_to = 'images', blank = True)
-#     description = models.TextField(blank = True, null = True)
-#     production_date = models.DateTimeField(auto_now_add = True)
-#     quantity = models.IntegerField(default = 0, blank = True, null = True)
-#     manufacturer_id = models.ForeignKey('Manufacturer', on_delete = models.CASCADE)
-#     created_on = models.DateTimeField(auto_now_add = True)
-#     modified = models.DateTimeField(auto_now = True)
-#     is_active = models.BooleanField(default = False)
+    def __unicode__(self) :
+        return u'{} Code:{} industry:{}'.format(self.name, str(self.code), self.industry)
 
-#     class Meta :
-#         ordering = ['-created_on']
+class Employee(models.Model):
+    pass
 
-# class Product(models.Model):
-#     product_line_id = models.ForeignKey('ProductLine', on_delete = models.CASCADE)
-#     created_on = models.DateTimeField(auto_now_add = True)
-#     modified = models.DateTimeField(auto_now = True)
-#     is_active = models.BooleanField(default = False)
+class User(models.Model):
+    first_name = models.CharField(max_length = 30)
+    last_name = models.CharField(max_length = 30)
+    session_id = models.IntegerField()
+    user_type = models.CharField(max_length = 30)
+    contact = models.ForeignKey('Contact', on_delete = models.CASCADE)
 
-#     class Meta :
-#         ordering = ['-created_on']
 
-#     def __unicode__(self) :
-#         return self.product_line_id
+class Batch(models.Model):
+    batch_number = models.CharField(max_length = 100)
+    production_date = models.DateTimeField()
+    expiry_date = models.DateTimeField()
+    origin = models.CharField(max_length = 50)
+    created_on = models.DateTimeField(auto_now_add = True)
+    modified = models.DateTimeField(auto_now = True)
+    is_active = models.BooleanField(default = False)
 
-# class ProductCode(models.Model):
-#     company_code = models.CharField()
-#     product_line_code = models.CharField()
-#     product_code = models.CharField()
+    class Meta :
+        ordering = ['-created_on']
+
+class ProductLine(models.Model):
+    name = models.CharField(max_length = 100)
+    photo = models.ImageField(upload_to = 'images', blank = True)
+    description = models.TextField(blank = True, null = True)
+    production_date = models.DateTimeField(auto_now_add = True)
+    quantity = models.IntegerField(default = 0, blank = True, null = True)
+    manufacturer_id = models.ForeignKey('Manufacturer', on_delete = models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add = True)
+    modified = models.DateTimeField(auto_now = True)
+    is_active = models.BooleanField(default = False)
+
+    class Meta :
+        ordering = ['-created_on']
+
+class Product(models.Model):
+    product_line_id = models.ForeignKey('ProductLine', on_delete = models.CASCADE)
+    created_on = models.DateTimeField(auto_now_add = True)
+    modified = models.DateTimeField(auto_now = True)
+    is_active = models.BooleanField(default = False)
+
+    class Meta :
+        ordering = ['-created_on']
+
+    def __unicode__(self) :
+        return self.product_line_id
+
+class ProductCode(models.Model):
+    company_code = models.CharField(max_length = 4)
+    product_line_code = models.CharField(max_length = 2)
+    product_code = models.CharField(max_length = 10)
+
 
 
 #This represents data stored for each internal verification
