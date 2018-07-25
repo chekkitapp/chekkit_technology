@@ -34,6 +34,7 @@ class Batch(models.Model):
 	created_on = models.DateTimeField(auto_now_add = True)
 	modified = models.DateTimeField(auto_now = True)
 	is_active = models.BooleanField(default = False)
+	manufacturer = models.ForeignKey('Manufacturer', on_delete = models.CASCADE)
 
 	def __str__(self):
 		return "{}: {}".format(self.location.manufacturer_name, self.batch_number)
@@ -42,14 +43,4 @@ class Batch(models.Model):
 		ordering = ['-created_on']
 
 
-class Product(models.Model):
-	product_code=models.IntegerField(unique=True)
-	product_line = models.ForeignKey(ProductLine, on_delete=models.CASCADE)
-	is_active = models.BooleanField(default=False)
-	batch_number = models.ForeignKey(Batch, on_delete=models.CASCADE)
 
-	def __str__(self):
-		return str(self.product_code)
-
-	def get_absolute_url(self):
-		return reverse('detail_productline')

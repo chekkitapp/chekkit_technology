@@ -10,7 +10,7 @@ class Contact(models.Model):
 
     class Meta :
         ordering = ['-created_on']
-
+        
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length = 30)
