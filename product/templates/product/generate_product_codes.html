@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
+{% load bulma_tags staticfiles static %}
+
 {% block content %}
-<div class="container">
-    <h2>Create Product</h2>
-    <form action="." method="post">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" value="Submit" />
-      </form>
-  </div>
+    <div class="container w3-margin-top">
+        <form action="." method="post">
+            <h1 class="menu-label w3-xlarge">Create Product {{ manufacturer }}</h1>
+            {% csrf_token %}
+            {{ form|bulma }}
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
 {% endblock %}

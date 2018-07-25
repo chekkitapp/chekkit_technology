@@ -1,22 +1,27 @@
-{% extends "base.html" %}
-{% load static %}
-{% block title %}Product Line{% endblock %}
+{% extends 'base.html' %}
 {% block content %}
+    <div class="w3-quarter w3-light-grey">
+        {% include 'partials/sidebar.html' %}
 
-<div id="main" class="product-list">
-	<h1>Product Line</h1>
-	{% for productline in productlines %}
-	<div class="item">
-		<a href="{% url 'product:detail_productline' productline.id %}">
-			<img class="image_size" src="{% if productline.photo %}{{ productline.photo.url }}{% else %}
-	{% static 'image/noimage.png' %}{% endif %}">
-		</a>
-		<a href="{% url 'product:detail_productline' productline.id %}">{{ productline.product_name }}</
-		a><br>
-		${{ productline.description }}
-	</div>
-	{% endfor %}
-</div>
+    </div>
+    <div class="w3-threequarter w3-container w3-margin-top">
+        <h1 class="title w3-padding-16">Product Lines @ {{ request.user.profile.manufacturer }}</h1>
+        <div class="columns is-multiline is-centered">
+            {% for product_line in product_lines %}
+                <div class="column is-4 w3-animate-zoom">
+                    <section class="card">
+                        <p class="card-header-title is-centered">
+                            <a href="{% url 'product:detail_productline' product_line.id %}">{{product_line.product_name}}</a>
+                        </p>
+                        <a href="{% url 'product:detail_productline' product_line.id %}" class="is-1by1">
+                            <img src="https://bulma.io/images/placeholders/480x480.png" alt="Placeholder image">
+                        </a>
+                    </section>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
+
 
 

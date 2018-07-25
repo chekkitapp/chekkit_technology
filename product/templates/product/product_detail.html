@@ -1,5 +1,94 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ productline.product_name }}</h1>
-<p>{{ productline.description }}</p>
+    <div class="w3-quarter w3-light-grey">
+        {% include 'partials/sidebar.html' %}
+
+    </div>
+    <div class="w3-threequarter">
+        <header class="hero is-small is-link">
+            <div class="hero-body columns">
+                <div class="column is-2">
+                    <figure class="image is-128x128">
+                        <img src="https://bulma.io/images/placeholders/480x480.png" alt="">
+                    </figure>
+                </div>
+                <div class="column is-10 w3-container">
+
+                    <h1 class="title">{{ productline.product_name }}</h1>
+                    <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet assumenda debitis
+                        deleniti distinctio id illum inventore, perspiciatis quam quas quia ratione recusandae repellat
+                        sint soluta temporibus tenetur unde veritatis voluptate.</p>
+                    <a class="button is-dark is-medium" href="{% url 'product:generate_product_line_codes' productline.uuid  %}">Generate Product Codes for {{ productline.product_name }}</a>
+                </div>
+            </div>
+        </header>
+        <section class="w3-margin">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Batch No.</th>
+                    <th>Date</th>
+                    <th>No. Codes Generated</th>
+                    <th>Employee</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+
+                    <th>#</th>
+                    <th>Batch No.</th>
+                    <th>Date</th>
+                    <th>No. Codes Generated</th>
+                    <th>Employee</th>
+                    <th>Status</th>
+
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <th>1</th>
+                    <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester
+                        City</a> <strong>(C)</strong>
+                    </td>
+                    <td>38</td>
+                    <td>23</td>
+                    <td>12</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester
+                        City</a> <strong>(C)</strong>
+                    </td>
+                    <td>38</td>
+                    <td>23</td>
+                    <td>12</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester
+                        City</a> <strong>(C)</strong>
+                    </td>
+                    <td>38</td>
+                    <td>23</td>
+                    <td>12</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C." title="Leicester City F.C.">Leicester
+                        City</a> <strong>(C)</strong>
+                    </td>
+                    <td>38</td>
+                    <td>23</td>
+                    <td>12</td>
+                    <td>3</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
 {% endblock %}
