@@ -27,42 +27,33 @@
 
 	</nav>
 
-	<nav class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-			<div class="bg-white text-center navbar-brand-wrapper">
-			  <a class="navbar-brand brand-logo" href="index.html"><img src="images/chekkit_logo.jpeg" style="width: 30%" /></a>
-			  <!-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/chekkit_logo.jpeg" alt=""></a> -->
-			</div>
-			<div class="navbar-menu-wrapper d-flex align-items-center">
-			  <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3" type="button" data-toggle="minimize">
-				<span class="navbar-toggler-icon"></span>
-			  </button>
-			  <form class="form-inline mt-2 mt-md-0 d-none d-lg-block">
-				<input class="form-control mr-sm-2 search" type="text" placeholder="Search">
-			  </form>
-			  <ul class="navbar-nav ml-lg-auto d-flex align-items-center flex-row">
-				<li class="nav-item">
-				  <a href="/">Chekkit</span>
-				  <button type="button" class="btn btn-outline-warning mr-2"><a href="{% url 'product:add_productlines'%}">Create Product Line</a></button>
-				  <button type="button" class="btn btn-outline-warning mr-2"><a href="{% url 'product:generate_product_codes'%}">Generate Product Code(s)</a></button>
-
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="#"><i class="fa fa-th"></i></a>
-				</li>
-			  </ul>
-			  <button class="navbar-toggler navbar-dark navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-				<span class="navbar-toggler-icon"></span>
-			  </button>
-			</div>
-	</nav>
 
 	<!-- side bar -->
 	
 			<!-- end of side bar -->
+<body>
+		<div id="header">
+			<a href="/" class="logo">My shop</a>
+		</div>
 
-	<br>
-	{%block content%}
-	{%endblock %}
+			<!-- search bar -->
+				<nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
+				  <form class="form-inline" action=".">
+				    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+				    <button class="btn btn-success" type="submit">Search</button>
+				    <button type="button" class="btn btn-outline-warning mr-2"><a href="{% url 'product:add_productlines'%}">Create Product Line</a></button>
+				  <button type="button" class="btn btn-outline-warning mr-2"><a href="{% url 'product:generate_product_codes'%}">Generate Product Code(s)</a></button>
 
+				  </form>
+				</nav>
+
+			<!-- end search bar -->
+			
+		<div id="content">
+			<br>
+			{% block content %}
+			{% endblock %}
+		</div>
+	
 </body>
 </html>
