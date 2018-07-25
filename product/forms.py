@@ -1,6 +1,6 @@
 from django.forms import ModelForm, Form
 
-from . models import ProductLine, Product
+from ussdapp.models import ProductLine, Product
 
 class ProductLineForm(ModelForm):
 	class Meta:

@@ -19,4 +19,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls')),
     path('products/', include('product.urls')),
+    path('ussdapp/', include('ussdapp.urls')),
 ]
+
+print(urlpatterns)

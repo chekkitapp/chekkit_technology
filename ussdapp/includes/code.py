@@ -3,7 +3,7 @@ import random, datetime
 import uuid
 
 from math import floor
-from chekkitapp.models import ProductLine, Product, ProductCode, User, UserCheck, Employee, FactoryCheck
+from ussdapp.models import ProductLine, Product, ProductCode, User, UserCheck, FactoryCheck
 
 
 def rand_string (config = {"length" : 5}):

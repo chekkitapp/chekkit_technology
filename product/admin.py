@@ -2,7 +2,8 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from product.models import Product, ProductLine, Batch
+from ussdapp.models import Product, ProductLine, Batch
+
 
 class ProductLineAdmin(admin.ModelAdmin):
 	list_display = ('product_name', 'manufacturer','description', 'photo')

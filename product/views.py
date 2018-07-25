@@ -3,7 +3,7 @@ from . forms import ProductLineForm, ProductForm
 from django.views.generic import ListView, DetailView
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from product.models import ProductLine
+from ussdapp.models import ProductLine
 from django.views.generic.detail import DetailView
 # Create your views here.
 def add_productlines(request):

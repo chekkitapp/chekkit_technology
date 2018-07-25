@@ -63,7 +63,7 @@ class ProductLine(models.Model):
     product_name = models.CharField(max_length = 100)
     description = models.TextField(blank = True, null = True)
     photo = models.ImageField(upload_to = 'images', blank = True)
-    manufacturer_id = models.ForeignKey(Manufacturer, on_delete = models.CASCADE, blank = True, null = True)
+    manufacturer = models.ForeignKey('Manufacturer', on_delete = models.CASCADE, blank = True, null = True)
     quantity = models.IntegerField(default = 0, blank = True, null = True)
     production_date = models.DateTimeField(auto_now_add = True)
     created_on = models.DateTimeField(auto_now_add = True)
@@ -106,7 +106,7 @@ class Location(models.Model):
 #This represents data stored for each internal verification
 # a
 class FactoryCheck(models.Model):
-    employee_id = models.ForeignKey('Employee', on_delete = models.CASCADE)
+    employee_id = models.ForeignKey('User', on_delete = models.CASCADE)
     date_checked = models.DateTimeField(auto_now = True)
 
 #This will help us collect information about each external verification
@@ -123,7 +123,7 @@ class UserCheck(models.Model):
 # 4.
 # 5.
 class FeedbackOption(models.Model):
-    option = models.IntegerField(max_length = 1)
+    option = models.IntegerField()
     message = models.CharField(max_length = 150)
 
 # Feeeback from users
